@@ -1,5 +1,5 @@
-0BSD
-====
+Fucko
+=====
 
-Template repo for projects under the Zero-clause BSD license.
+https://www.youtube.com/watch?v=dp28SjGoGyo
 
