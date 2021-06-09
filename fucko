@@ -5,20 +5,18 @@
 fuckies="$HOME/.fuckies"
 test ! -d "$fuckies" && mkdir "$fuckies"
 
-wuckies="$HOME/.fuckies/$(date +%F)"
+wuckies="$fuckies/$(date +%F)"
 test ! -f "$wuckies" && touch "$wuckies"
 
-oopsie="$1"
-if [ ! -z "$oopsie" ]; then
-    echo "$oopsie" >> "$wuckies"
+oopsie="$@"
+test ! -z "$oopsie" && echo "$oopsie" >> "$wuckies"
+
+woopsies="$(wc -l < "$wuckies" | cut -d' ' -f1)"
+if [ "$woopsies" -eq 0 ]; then
+    echo "(≧∇≦)/: Rawr X3 *nuzzles* OwO what is this? no oopsie woopsies? *pounces on you*"
+elif [ "$woopsies" -lt 5 ]; then
+    echo "(ᗒᗩᗕ): Youwu awweady made $woopsies fucko boingos?"
 else
-    woopsies="$(wc -l < "$wuckies" | cut -d' ' -f1)"
-    if [ "$woopsies" -eq 0 ]; then
-        echo "(≧∇≦)/: Rawr X3 *nuzzles* OwO what is this? no oopsie woopsies? *pounces on you*"
-    elif [ "$woopsies" -lt 5 ]; then
-        echo "(ᗒᗩᗕ): Youwu awweady made $woopsies fucko boingos?"
-    else
-        echo "(ू˃̣̣̣̣̣̣︿˂̣̣̣̣̣̣ ू): Ouw code monkeys awe wowking vewy hawd to fix your $woopsies fucky wuckies! I can't b-bewieve you wouwd do this to them!"
-    fi
+    echo "(ू˃̣̣̣̣̣̣︿˂̣̣̣̣̣̣ ू): Ouw code monkeys awe wowking vewy hawd to fix your $woopsies fucky wuckies! I can't b-bewieve you wouwd do this to them!"
 fi
 
